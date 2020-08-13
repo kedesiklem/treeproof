@@ -1,19 +1,19 @@
-- [TreeProof with Ocaml](#orgff37378)
-  - [Utilisation :](#org83c5119)
-  - [Compilation :](#orgb4acdab)
-  - [Execution en instantané](#orgafdd388)
+- [TreeProof with Ocaml](#orge1c3318)
+  - [Utilisation](#orgbcc761f)
+  - [Compilation](#org3b30a7f)
+  - [Execution en instantané](#orge1526a0)
 
 
-<a id="orgff37378"></a>
+<a id="orge1c3318"></a>
 
 # TreeProof with Ocaml
 
-La methode des arbres permet de demontrer si une proposition logique est, ou non, un théoreme de la logique, c'est à dire si elle est toujours vrai. Ce programme codé un Ocaml recupère une proposition logique et l'analyse afin de générer trois chose, un booleen, indiquant si oui ou non la proposition est un théorme, la demonstration, et l'analyse de la proposition, les deux dernier sous la forme de fichiers graphiques generables avec graphiz
+La [méthode des arbres](https://fr.wikipedia.org/wiki/M%C3%A9thode_des_tableaux) permet de démontrer si une proposition logique est, ou non, un théoreme de la logique, c'est à dire si elle est toujours vrai. Ce programme codé un Ocaml recupère une proposition logique et l'analyse afin de générer trois choses, un booleen, indiquant si oui ou non la proposition est un théorme, la démonstration, et l'analyse de la proposition, les deux derniers sous la forme de fichiers graphiques générables avec graphiz
 
 
-<a id="org83c5119"></a>
+<a id="orgbcc761f"></a>
 
-## Utilisation :
+## Utilisation
 
 executer le programme puis entrez une proposition logique respectant la synthaxe suivante
 
@@ -25,19 +25,19 @@ equivalence : =
 negation    : ! or ~
 ```
 
-(le systeme peux prendre en charge des mots, mais faites attention aux parentheses, elles sont aussi reserver à l'analyse)
+(le systeme peut prendre en charge des mots, mais faites attention aux parentheses, elles sont aussi reserver à l'analyse)
 
 
-<a id="orgb4acdab"></a>
+<a id="org3b30a7f"></a>
 
-## Compilation :
+## Compilation
 
 ```
 ocamlc tree.ml -o tree
 ```
 
 
-<a id="orgafdd388"></a>
+<a id="orge1526a0"></a>
 
 ## Execution en instantané
 
