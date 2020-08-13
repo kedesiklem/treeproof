@@ -4,14 +4,15 @@ Ce programme codé un Ocaml recupère une proposition logique et l'analyse afin 
 Utilisation :
 executer le programme puis entrez une proposition logique respectant la synthaxe suivante
 
+#+BEGIN_SRC 
+
 et          : & 
-
 ou          : v 
-
 implacation : > 
-
 equivalence : = 
-
 negation    : ! or ~
+
+#+END_SRC
+
 
 (le systeme peux prendre en charge des mots, mais faites attention aux parentheses, elles sont aussi reserver à l'analyse)
