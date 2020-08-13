@@ -1,10 +1,11 @@
-- [TreeProof with Ocaml](#org9a1a432)
-  - [Utilisation](#org0e15340)
-  - [Compilation](#orgace81f3)
-  - [Exemple](#org045045c)
+- [TreeProof with Ocaml](#orgeb5f6b8)
+  - [Utilisation](#org36fa411)
+  - [Compilation](#orgb59df9b)
+  - [Exemple](#org9a14950)
+  - [Demonstration](#org1b93f1d)
 
 
-<a id="org9a1a432"></a>
+<a id="orgeb5f6b8"></a>
 
 # TreeProof with Ocaml
 
@@ -15,7 +16,7 @@ La [méthode des arbres](https://fr.wikipedia.org/wiki/M%C3%A9thode_des_tableaux
 3.  l'analyse de la proposition (forma graphiz pour dot)
 
 
-<a id="org0e15340"></a>
+<a id="org36fa411"></a>
 
 ## Utilisation
 
@@ -32,7 +33,7 @@ conditionel : >
 (le système peut prendre en charge des mots, mais faites attention aux parenthèses, elles sont aussi réservé à l'analyse)
 
 
-<a id="orgace81f3"></a>
+<a id="orgb59df9b"></a>
 
 ## Compilation
 
@@ -41,8 +42,15 @@ ocamlc tree.ml -o tree
 ```
 
 
-<a id="org045045c"></a>
+<a id="org9a14950"></a>
 
 ## Exemple
 
-![img](./gtree.png) Demo : <https://marin.elie.org/tree/>
+<./gtree.png >
+
+
+<a id="org1b93f1d"></a>
+
+## Demonstration
+
+<https://marin.elie.org/tree/>
