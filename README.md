@@ -2,14 +2,14 @@ La methode des arbres permet de demontrer si une proposition logique est, ou non
 
 Utilisation : executer le programme puis entrez une proposition logique respectant la synthaxe suivante
 
-et : &
+```
 
-ou : v
+et          : & 
+ou          : v 
+implacation : > 
+equivalence : = 
+negation    : ! or ~
 
-implacation : >
-
-equivalence : =
-
-negation : ! or ~
+```
 
 (le systeme peux prendre en charge des mots, mais faites attention aux parentheses, elles sont aussi reserver à l'analyse)
