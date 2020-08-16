@@ -10,8 +10,6 @@ let sto:string array=   [|"" ;"="  ;">" ;">" ;"&";"v";"v";"~";"~"|];;
 let help_doc:string=
   "Syntaxe: forest [options]\n\nforest take a formula and return a boolean.\n\n-t: produces formula.dot\n-g: produces proof.dot\n-h: prompt help\n\nnegation:\t ~ - !\nconjonction:\t & .\ndisjonction:\t + v |\nconditionnal:\t -> => >\nequivalence:\t <=> =\n";;
 
-print_string(help_doc);;
-
 (*REPLACE STRING START*)
 
 let s_replace(sfrom,sto,src:string*string*string):string= (Str.global_replace (Str.regexp sto) sfrom src);;
