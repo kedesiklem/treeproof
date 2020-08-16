@@ -1,12 +1,12 @@
-- [TreeProof with Ocaml](#org0e4ab38)
-  - [Option](#orgc3b3de4)
-  - [Help](#org86e2b90)
-  - [Compilation](#org0a0d4cf)
-  - [Exemple](#orge8b9ddf)
-  - [Démonstration](#orga8636e1)
+- [TreeProof with Ocaml](#orgb3f0fa7)
+  - [Option](#orgaba2796)
+  - [Help](#orgdf1c130)
+  - [Compilation](#orgd451ddd)
+  - [Exemple](#orgc1c6a5c)
+  - [Démonstration](#org07ee42a)
 
 
-<a id="org0e4ab38"></a>
+<a id="orgb3f0fa7"></a>
 
 # TreeProof with Ocaml
 
@@ -17,7 +17,7 @@ Forest is a prover, wrote in Ocaml.
 It produces the graphviz dot file of the proof and the tree of formula (also in dot).
 
 
-<a id="orgc3b3de4"></a>
+<a id="orgaba2796"></a>
 
 ## Option
 
@@ -28,13 +28,13 @@ It produces the graphviz dot file of the proof and the tree of formula (also in 
 | -h      | show a description of the different options         |             |
 
 
-<a id="org86e2b90"></a>
+<a id="orgdf1c130"></a>
 
 ## Help
 
 ```
 négation    : ! ~ -
-conjonction : & .
+conjonction : & . 
 disjonction : v | +
 conditionel : > -> =>
 équivalence : = <=> 
@@ -43,7 +43,7 @@ conditionel : > -> =>
 (the programme can take in charge variable<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> longer than one character, but be careful of the parentheses)
 
 
-<a id="org0a0d4cf"></a>
+<a id="orgd451ddd"></a>
 
 ## Compilation
 
@@ -52,14 +52,14 @@ ocamlc str.cma forest.ml -o forest
 ```
 
 
-<a id="orge8b9ddf"></a>
+<a id="orgc1c6a5c"></a>
 
 ## Exemple
 
-![img](./gtree.png)
+![img](./proof.png)
 
 
-<a id="orga8636e1"></a>
+<a id="org07ee42a"></a>
 
 ## Démonstration
 
