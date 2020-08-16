@@ -251,7 +251,7 @@ let proof(t:string):t_gtree*bool=
                                      else (!ancetre).(etage) <- a);
                                     (*print_string("\n"^psl(!ancetre)^"\n");*)
                                     (*print_string(a^" : "^psl(!ancetre)^"\n");*)
-                                    (if (List.exists (fun x -> x=("~"^a)||("~"^x=a)) (Array.to_list (Array.sub !ancetre 0 (etage+1))))
+                                    (if (List.exists (fun x -> x=("~"^a)||("~"^x=a)||x=("~("^a^")")||(("~("^x^")")=a)) (Array.to_list (Array.sub !ancetre 0 (etage+1))))
                                      then (wstop:= true;
                                           ending:= a));
                                       split(a)
