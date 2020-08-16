@@ -1,4 +1,5 @@
 open Printf;;
+#load "str.cma";;
 
 (* | CONSTANTES | *)
 let option:string array= [|"-t";"-g";"-h"|];;
@@ -11,7 +12,6 @@ let help_doc:string=
   "Syntaxe: forest [options]\n\nforest take a formula and return a boolean.\n\n-t: produces formula.dot\n-g: produces proof.dot\n-h: prompt help\n\nnegation:\t ~ - !\nconjonction:\t & .\ndisjonction:\t + v |\nconditionnal:\t -> => >\nequivalence:\t <=> =\n";;
 
 (*REPLACE STRING START*)
-
 let s_replace(sfrom,sto,src:string*string*string):string= (Str.global_replace (Str.regexp sto) sfrom src);;
 
 let str_replace(sfrom,sto,src:string array*string array*string):string=
@@ -27,7 +27,7 @@ let str_replace(sfrom,sto,src:string array*string array*string):string=
 ;;
 
 let normalize(src:string):string=
-  str_replace(sfrom,sto,src)
+  Str.global_replace (Str.regexp "~\\([^(][^v&>=)(]*\\)") "(~\\1)" (str_replace(sfrom,sto,src))
 ;;
 
 (*REPLACE STRING END*)
@@ -313,7 +313,3 @@ let main():unit=
 ;;
 
 main();;
-
-(*
-let src:string=
-  "(((( a0 => f) & ((( b20 => b0) => a20) & ((( b0 => a1) => a0) & ((( b1=> a2) => a1) & ((( b2 => a3) => a2) & ((( b3 => a4) => a3) &((( b4 =>a5) => a4) & ((( b5 => a6) => a5) & ((( b6 => a7) => a6)& ((( b7 => a8)=> a7) & (((  b8 => a9) => a8) & ((( b9 => a10) =>a9) & ((( b10 => a11)=> a10) & (  (( b11 => a12) => a11) & ((( b12=> a13) => a12) & ((( b13=> a14)  => a13) & ((( b14 => a15) => a14)  & ((( b15 =>  a16) => a15)& ((( b16 => a17) => a16)  & ((( b17 =>a18) => a17) & ((( b18 => a19)=> a18) & ((b19 => a20) => a19)))) )))))))))))))))))) => f) & (((( b19=> a20) => a19)& ((( b18 =>  a19) => a18) & ((( b17 => a18) => a17)  &((( b16 =>a17) => a16) & ((( b15 => a16) => a15) & ((( b14 => a15) =>a14) & ((( b13 => a14) => a13) & (((  b12 => a13) => a12) & ((( b11 =>a12)=> a11) & ((( b10 => a11) => a10) & ((( b9 => a10) => a9) & (((b8=> a9) => a8) & ((( b7 => a8) => a7)  & ((( b6 => a7) => a6) & (((b5 => a6) => a5) & ((( b4 => a5) => a4) & ((( b3 => a4) => a3) & ((( b2=> a3) => a2) & ((( b1 => a2) => a1) & ((( b0 => a1) => a0) & ((( b20=> b0) => a20) & ( a0 => f)))))))))))))))))))))) => f))";;*)
