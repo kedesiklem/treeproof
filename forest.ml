@@ -26,7 +26,7 @@ let str_replace(sfrom,sto,src:string array*string array*string):string=
 ;;
 
 let normalize(src:string):string=
-  Str.global_replace (Str.regexp "~\\([^(][^v&>=)(]*\\)") "(~\\1)" (str_replace(sfrom,sto,src))
+  (str_replace(sfrom,sto,src))
 ;;
 
 (*REPLACE STRING END*)
@@ -61,7 +61,8 @@ let rec find_op(a:string):int*int=
   let prof:int ref=ref 0 and operator:int ref=ref (-1) and prof_op:int ref=ref (-1) in
   for i=0 to (String.length a -1) 
   do match a.[i] with
-       '&'|'v'|'>'|'='|'~' -> if !prof_op= -1 || !prof_op > !prof then (operator:= i;prof_op:=!prof);
+       '&'|'v'|'>'|'=' -> if !prof_op= -1 || !prof_op >= !prof then (operator:= i;prof_op:=!prof);
+       |'~' -> if !prof_op= -1 || !prof_op > !prof then (operator:= i;prof_op:=!prof);
        | '(' -> prof:= !prof +1
        | ')' -> prof:= !prof -1
        |  n  -> print_string("")
