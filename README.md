@@ -1,55 +1,65 @@
-- [TreeProof with Ocaml](#org99ce217)
-  - [Utilisation](#orgf290e6d)
-  - [Compilation](#org0a3d34a)
-  - [Exemple](#org378fb0f)
-  - [Démonstration](#org4bb4348)
+- [TreeProof with Ocaml](#org27ef58e)
+  - [Option](#orgd548ac4)
+  - [Help](#orga167a33)
+  - [Compilation](#org6ebfcad)
+  - [Exemple](#org7fe5412)
+  - [Démonstration](#org376e2a0)
 
 
-<a id="org99ce217"></a>
+<a id="org27ef58e"></a>
 
 # TreeProof with Ocaml
 
-La [méthode des arbres](https://fr.wikipedia.org/wiki/M%C3%A9thode_des_tableaux) permet de démontrer si une proposition logique est, ou non, un théorème de la logique, c'est à dire si elle est toujours vraie. Ce programme codé en Ocaml prend une proposition logique et l'analyse afin de générer trois choses :
+> In proof theory, [the semantic tableaux](https://en.wikipedia.org/wiki/Method_of_analytic_tableaux) (truth tree, *methode des arbres* in french) is a decision procedure. An analytic tableau is a tree structure computed for a logical formula, having at each node a subformula of the original formula to be proved or refuted. Computation constructs this tree and uses it to prove or refute the whole formula.
 
-1.  un booleen, indiquant si oui ou non la proposition est un théorème
-2.  la démonstration (forma graphviz pour dot)
-3.  l'analyse de la proposition (forma graphviz pour dot)
+Forest is a prover, wrote in Ocaml.
+
+It produces the graphviz dot file of the proof and the tree of formula (also in dot).
 
 
-<a id="orgf290e6d"></a>
+<a id="orgd548ac4"></a>
 
-## Utilisation
+## Option
 
-Éxécuter le programme puis entrez une proposition logique respectant la synthaxe suivante
+| Command | Description                                         | File's name |
+|------- |--------------------------------------------------- |----------- |
+| -t      | allow the generation of the tree formula dot's file | formula.dot |
+| -g      | allow the generation of the proof dot's file        | proof.dot   |
+| -h      | show a description of the different options         |             |
+
+
+<a id="orga167a33"></a>
+
+## Help
 
 ```
-négation    : ! or ~
-conjonction : & 
-disjonction : v 
-conditionel : > 
-équivalence : = 
+négation    : ! ~ -
+conjonction : & .
+disjonction : v | +
+conditionel : > -> =>
+équivalence : = <=> 
 ```
 
-(le système peut prendre en charge des mots, mais faites attention aux parenthèses, elles sont aussi réservé à l'analyse)
+(the programme can take in charge world, but be carful of the parentheses)
 
 
-<a id="org0a3d34a"></a>
+<a id="org6ebfcad"></a>
 
 ## Compilation
 
 ```
-ocamlc tree.ml -o tree
+ocamlc str.cma forest.ml -o forest
 ```
 
 
-<a id="org378fb0f"></a>
+<a id="org7fe5412"></a>
 
 ## Exemple
 
 ![img](./gtree.png)
 
 
-<a id="org4bb4348"></a>
+<a id="org376e2a0"></a>
 
 ## Démonstration
 
