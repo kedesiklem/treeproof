@@ -1,5 +1,4 @@
 open Printf;;
-#load "str.cma";;
 
 (* | CONSTANTES | *)
 let option:string array= [|"-t";"-g";"-h";"-e"|];;
