@@ -1,14 +1,15 @@
 open Printf;;
+#load "str.cma";;
 
 (* | CONSTANTES | *)
-let option:string array= [|"-t";"-g";"-h"|];;
-let str_shape:string="box";;
+let option:string array= [|"-t";"-g";"-h";"-e"|];;
+let str_shape:string ref=ref "box";;
 
 let sfrom:string array= [|" ";"<=>";"->";"=>";"\.";"+";"|";"-";"!"|] ;;
 let sto:string array=   [|"" ;"="  ;">" ;">" ;"&";"v";"v";"~";"~"|];;
 
 let help_doc:string=
-  "Syntaxe: forest [options]\n\nforest take a formula and return a boolean.\n\n-t: produces formula.dot\n-g: produces proof.dot\n-h: prompt help\n\nnegation:\t ~ - !\nconjonction:\t & .\ndisjonction:\t + v |\nconditionnal:\t -> => >\nequivalence:\t <=> =\n";;
+  "Syntaxe: forest [options]\n\nforest take a formula and return a boolean.\n\n-t: produces formula.dot\n-g: produces proof.dot\n-h: prompt help\n-e: disable boxes around nodes\n\nnegation:\t ~ - !\nconjonction:\t & .\ndisjonction:\t + v |\nconditionnal:\t -> => >\nequivalence:\t <=> =\n";;
 
 (*REPLACE STRING START*)
 let s_replace(sfrom,sto,src:string*string*string):string= (Str.global_replace (Str.regexp sto) sfrom src);;
@@ -188,7 +189,7 @@ let print_t_tree(a:t_tree):string=
   in
   
   let (truc,_):string*int=sub_print(a,compteur()) in
-  "digraph t_tree{\nnode [shape="^str_shape^"]\n"^truc^"}"
+  "digraph t_tree{\nnode [shape="^ !str_shape^"]\n"^truc^"}"
 ;;
 
 let print_gtree(a:t_gtree):string=
@@ -228,7 +229,7 @@ let print_gtree(a:t_gtree):string=
      |X -> "",-1
   in
   let (truc,_):string*int=sub_print(a,compteur()) in
-  "digraph t_tree{\nnode [shape="^str_shape^"]\n"^truc^"}"
+  "digraph t_tree{\nnode [shape="^ !str_shape^"]\n"^truc^"}"
 ;;
 
 let psl (a:string array):string=
@@ -264,14 +265,18 @@ let proof(t:string):t_gtree*bool=
          '&' -> gt:= add_AND(!gt,debut,fin)
        | 'v' -> gt:= add_OR(!gt,debut,fin)
        | '>' -> gt:= add_OR(!gt,"~"^debut,fin)
-       | '=' -> gt:= add_AND(!gt,debut^">"^fin,fin^">"^debut)
+       | '=' -> gt:= add_OR(add_OR(!gt,fin,"~"^debut),debut,"~"^fin)
        | '~' ->
           let (nop,ndebut,nfin):char*string*string=split(fin) in
           (match nop with
              '&' -> gt:=add_OR(!gt,"~"^ndebut,"~"^nfin)
            | 'v' -> gt:=add_AND(!gt,"~"^ndebut,"~"^nfin)
            | '>' -> gt:=add_AND(!gt,ndebut,"~"^nfin)
-           | '=' -> gt:=add_OR(!gt,"~("^ndebut^">"^nfin^")","~("^nfin^">"^ndebut^")")
+           | '=' -> (match !gt with
+                      G(a,b,c) -> gt:=G(a,add_AND(b,ndebut,"~"^nfin),add_AND(c,nfin,"~"^ndebut))
+                     |C(a,b) -> gt:=G(a,add_AND(b,ndebut,"~"^nfin),add_AND(b,nfin,"~"^ndebut))
+                     |S(a)-> gt:= G(a,C(ndebut,S("~"^nfin)),C(nfin,S("~"^ndebut)))
+                     |X -> gt:= X)
            | '~' -> gt:=add_NOT(!gt,nfin)
            |  _   -> print_string(""));
        | _ -> print_string(""));
@@ -293,13 +298,14 @@ let main():unit=
   do isopt.(i) <- (Array.exists (fun x->(x=option.(i))) Sys.argv)
   done;
 
-
+  if isopt.(3) (*-e*)
+  then (str_shape:="none";);   
   if isopt.(2) (*-h*)
   then (print_string(help_doc))
   else (
     
     print_string("formula: ");
-
+    
     let input:string=normalize(read_line()) in
     let (tree,answer):t_gtree*bool= proof(input) in
     
