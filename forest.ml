@@ -1,5 +1,4 @@
 open Printf;;
-#load "str.cma";;
 
 let a:string ="≡";;
 a.[0];;

@@ -1,0 +1,48 @@
+* TreeProof with Ocaml
+  
+#+BEGIN_QUOTE
+In proof theory, [[https://en.wikipedia.org/wiki/Method_of_analytic_tableaux][the semantic tableaux]] (truth tree, /methode des arbres/ in french) is a decision procedure.
+An analytic tableau is a tree structure computed for a logical formula, having at each node a subformula of the original formula to be proved or refuted. 
+Computation constructs this tree and uses it to prove or refute the whole formula.
+#+END_QUOTE
+
+Forest is a prover, wrote in Ocaml.
+
+It produces the graphviz dot file of the proof and the tree of formula (also in dot). 
+
+** Option
+
+| Command | Description                                         | File's name |
+|---------+-----------------------------------------------------+-------------|
+| -t      | allow the generation of the tree formula dot's file | formula.dot |
+| -g      | allow the generation of the proof dot's file        | proof.dot   |
+| -h      | show a description of the different options         |             |
+| -e      | disable boxes around the nodes                      |             |
+
+** Help
+
+#+BEGIN_SRC 
+négation    : ! ~ -
+conjonction : & . 
+disjonction : v | +
+conditionel : > -> =>
+équivalence : = <=> 
+#+END_SRC
+
+(the programme can take in charge variable[fn:1] longer than one character, but be careful of the parentheses)
+
+** Compilation
+#+BEGIN_SRC
+ocamlc str.cma forest.ml -o forest
+#+END_SRC
+
+** Exemple
+   [[./proof.png]]
+
+** Démonstration
+   https://marin.elie.org/tree/
+
+* Footnotes
+
+[fn:1] v is an operator... have fun
+
