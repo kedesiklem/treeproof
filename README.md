@@ -62,10 +62,6 @@ ocamlc str.cma forest.ml -o forest
 
 <a id="org3ec6b61"></a>
 
-## Démonstration
-
-<https://marin.elie.org/tree/>
-
 ## Footnotes
 
 <sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> v is an operator&#x2026; have fun
